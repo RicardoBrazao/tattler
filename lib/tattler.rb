@@ -7,7 +7,6 @@ class Tattler
 		http = Net::HTTP.new(uri.host, uri.port)
 		request = Net::HTTP::Post.new(endpoint)
 		request.add_field('Content-Type', 'application/json')
-		request.body = params
-		http.request(request)
+		http.request(request,params.to_json)
 	end
 end
