@@ -1,8 +1,8 @@
 require 'net/http'
 
 class Tattler
-	def self.tell(endpoint, params = {})
-		raise NoEndpointSpecified if endpoint.nil?
+	def self.tell(endpoint, params)
+		raise NoEndpointSpecified if endpoint.nil? || endpoint.empty?
 		uri = URI.parse(endpoint)
 		http = Net::HTTP.new(uri.host, uri.port)
 		request = Net::HTTP::Post.new(endpoint)
