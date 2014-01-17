@@ -9,4 +9,13 @@ class Tattler
 		request.add_field('Content-Type', 'application/json')
 		http.request(request,params.to_json)
 	end
+
+	def self.acquire(endpoint, params={})
+		uri = URI(endpoint)
+		uri.query  = URI.encode_www_form(params)
+		http = Net::HTTP.new(uri.host, uri.port)
+		request = Net::HTTP::Get.new(uri.request_uri)
+		testing = http.request(request)		
+	end
+
 end
