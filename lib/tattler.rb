@@ -15,7 +15,7 @@ class Tattler
 		uri.query  = URI.encode_www_form(params)
 		http = Net::HTTP.new(uri.host, uri.port)
 		request = Net::HTTP::Get.new(uri.request_uri)
-		testing = http.request(request)		
+		http.request(request)		
 	end
 
 end
